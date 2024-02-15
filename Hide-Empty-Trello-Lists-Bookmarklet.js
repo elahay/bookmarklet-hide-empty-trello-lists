@@ -8,6 +8,14 @@
 //   4. End all statements with ;
 javascript: (function () {
     /* Source: https://baincd.github.io/bookmarklet-hide-empty-trello-lists */
+
+    const whitelistedColumns = {
+        'In For Testing 📦': true,
+        'Testing In Progress 🔎 🐛': true,
+        'Waiting on PRs or Deploys to Staging ⌛': true,
+        'In Progress 👨‍💻': true,
+        'This Week 🏃': true,
+    }
     function hasVisibleCards(list) {
         let listCards = list.querySelectorAll('li[data-testid=list-card]');
         for (let i = 0; i < listCards.length; i++) {
@@ -22,11 +30,19 @@ javascript: (function () {
         return (el && el.classList && el.classList.contains('resize-element'));
     }
 
+    function getListName(listElement) {
+        const titleElement = listElement?.querySelector('h2[data-testid=list-name]');
+        return titleElement?.textContent || '';
+    }
+
     function displayEmptyLists(displayEmptyListsEnabled) {
         let lists = document.getElementById('board').querySelectorAll('li[data-list-id]');
 
         for (let i = 0; i < lists.length; i++) {
             const list = lists[i];
+            if (whitelistedColumns[getListName(list)]) {
+                continue;
+            }
             const listSibling = list.nextSibling;
             const displayValue = (displayEmptyListsEnabled || hasVisibleCards(lists[i]) ? 'inline-block' : 'none');
 
@@ -37,7 +53,7 @@ javascript: (function () {
                 listSibling.style.display = displayValue;
             }
         }
-    };
+    }
 
     if (window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL === undefined) {
         displayEmptyLists(false);
@@ -47,5 +63,4 @@ javascript: (function () {
         window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL = undefined;
         displayEmptyLists(true);
     }
-
 })();

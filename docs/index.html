@@ -1,5 +1,9 @@
+<!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Hide Empty Trello Lists Bookmarklet</title>
 		<style>
 			.button { /* Courtesy https://stackoverflow.com/a/710108/4764903 */
@@ -26,6 +30,15 @@
 
 		<span style="padding-right: 250px;">
 			A <a href="https://bookmarklets.org/what-is-a-bookmarklet/">bookmarklet</a> that toggles hiding and showing empty lists on Trello boards, bringing this functionality from the Android Trello app to your desktop/laptop web browser.<p/>
+			<br>
+			But always leaves specific columns visible:
+			<ul>
+				<li>In For Testing 📦</li>
+				<li>Testing In Progress 🔎 🐛</li>
+				<li>Waiting on PRs or Deploys to Staging ⌛</li>
+				<li>In Progress 👨‍💻</li>
+				<li>This Week 🏃</li>
+			</ul>
 		</span>
 
 		<img class="responsive" src="example-usage.png" />
@@ -50,7 +63,7 @@
 		Drag and drop the following button to your browser's Bookmarks Bar: <p/>
 
 		<!-- Bookmarklet should be updated via `update-doc.sh` -->
-		<a class="button" href="javascript: (function () { /* Source: https://baincd.github.io/bookmarklet-hide-empty-trello-lists */ function hasVisibleCards(list) { let listCards = list.querySelectorAll('li[data-testid=list-card]'); for (let i = 0; i < listCards.length; i++) { if (!listCards[i].attributes['hidden']) { return true; } } return false; } function isResizeElement(el) { return (el && el.classList && el.classList.contains('resize-element')); } function displayEmptyLists(displayEmptyListsEnabled) { let lists = document.getElementById('board').querySelectorAll('li[data-list-id]'); for (let i = 0; i < lists.length; i++) { const list = lists[i]; const listSibling = list.nextSibling; const displayValue = (displayEmptyListsEnabled || hasVisibleCards(lists[i]) ? 'inline-block' : 'none'); list.style.display = displayValue; if (isResizeElement(listSibling)) { listSibling.style.display = displayValue; } } }; if (window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL === undefined) { displayEmptyLists(false); window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL = setInterval(displayEmptyLists, 500); } else { clearInterval(window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL); window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL = undefined; displayEmptyLists(true); } })();">
+		<a class="button" href="javascript:var%20whitelistedColumns%3D%7B%22In%20For%20Testing%20%5Cud83d%5Cudce6%22%3A!0%2C%22Testing%20In%20Progress%20%5Cud83d%5Cudd0e%20%5Cud83d%5Cudc1b%22%3A!0%2C%22Waiting%20on%20PRs%20or%20Deploys%20to%20Staging%20%5Cu231b%22%3A!0%2C%22In%20Progress%20%5Cud83d%5Cudc68%5Cu200d%5Cud83d%5Cudcbb%22%3A!0%2C%22This%20Week%20%5Cud83c%5Cudfc3%22%3A!0%7D%3Bfunction%20hasVisibleCards(a)%7Ba%3Da.querySelectorAll(%22li%5Bdata-testid%3Dlist-card%5D%22)%3Bfor(var%20b%3D0%3Bb%3Ca.length%3Bb%2B%2B)if(!a%5Bb%5D.attributes.hidden)return!0%3Breturn!1%7Dfunction%20isResizeElement(a)%7Breturn%20a%26%26a.classList%26%26a.classList.contains(%22resize-element%22)%7Dfunction%20getListName(a)%7Breturn%20a.querySelector(%22h2%5Bdata-testid%3Dlist-name%5D%22).textContent%7C%7C%22%22%7Dfunction%20displayEmptyLists(a)%7Bfor(var%20b%3Ddocument.getElementById(%22board%22).querySelectorAll(%22li%5Bdata-list-id%5D%22)%2Cc%3D0%3Bc%3Cb.length%3Bc%2B%2B)%7Bvar%20d%3Db%5Bc%5D%3Bif(!whitelistedColumns%5BgetListName(d)%5D)%7Bvar%20e%3Dd.nextSibling%2Cf%3Da%7C%7ChasVisibleCards(b%5Bc%5D)%3F%22inline-block%22%3A%22none%22%3Bd.style.display%3Df%3BisResizeElement(e)%26%26(e.style.display%3Df)%7D%7D%7Dvoid%200%3D%3D%3Dwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3F(displayEmptyLists(!1)%2Cwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3DsetInterval(displayEmptyLists%2C500))%3A(clearInterval(window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL)%2Cwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3Dvoid%200%2CdisplayEmptyLists(!0))%3Bvoid+0">
 			Hide Empty Trello Lists
 		</a> <p/>
 
