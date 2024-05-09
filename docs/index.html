@@ -38,6 +38,7 @@
 				<li>Waiting on PRs or Deploys to Staging ⌛</li>
 				<li>In Progress 👨‍💻</li>
 				<li>This Week 🏃</li>
+				<li>Dev Work 🛠️</li>
 			</ul>
 		</span>
 
@@ -47,8 +48,8 @@
 		Follow the instructions below to add the bookmarklet to your browser.<p/>
 
 		With the browser open to a Trello board, click the bookmark to toggle between enabling and disabling the bookmarklet.  When enabled, any Trello lists with no cards currently displayed will be hidden.<p/>
-		
-		<h4>Notes</h4> 
+
+		<h4>Notes</h4>
 		<ul>
 			<li>Only works on currently open browser tab when open to Trello.  Refreshing tab, closing tab, or navigating to another site will reset to the default Trello behavior.</li>
 			<li>When enabled, the bookmarklet hides empty lists even when not filtering/searching cards.  The Trello Android app only hides empty lists when filtering.</li>
@@ -62,8 +63,8 @@
 
 		Drag and drop the following button to your browser's Bookmarks Bar: <p/>
 
-		<!-- Bookmarklet should be updated via `update-doc.sh` -->
-		<a class="button" href="javascript:var%20whitelistedColumns%3D%7B%22In%20For%20Testing%20%5Cud83d%5Cudce6%22%3A!0%2C%22Testing%20In%20Progress%20%5Cud83d%5Cudd0e%20%5Cud83d%5Cudc1b%22%3A!0%2C%22Waiting%20on%20PRs%20or%20Deploys%20to%20Staging%20%5Cu231b%22%3A!0%2C%22In%20Progress%20%5Cud83d%5Cudc68%5Cu200d%5Cud83d%5Cudcbb%22%3A!0%2C%22This%20Week%20%5Cud83c%5Cudfc3%22%3A!0%7D%3Bfunction%20hasVisibleCards(a)%7Ba%3Da.querySelectorAll(%22li%5Bdata-testid%3Dlist-card%5D%22)%3Bfor(var%20b%3D0%3Bb%3Ca.length%3Bb%2B%2B)if(!a%5Bb%5D.attributes.hidden)return!0%3Breturn!1%7Dfunction%20isResizeElement(a)%7Breturn%20a%26%26a.classList%26%26a.classList.contains(%22resize-element%22)%7Dfunction%20getListName(a)%7Breturn%20a.querySelector(%22h2%5Bdata-testid%3Dlist-name%5D%22).textContent%7C%7C%22%22%7Dfunction%20displayEmptyLists(a)%7Bfor(var%20b%3Ddocument.getElementById(%22board%22).querySelectorAll(%22li%5Bdata-list-id%5D%22)%2Cc%3D0%3Bc%3Cb.length%3Bc%2B%2B)%7Bvar%20d%3Db%5Bc%5D%3Bif(!whitelistedColumns%5BgetListName(d)%5D)%7Bvar%20e%3Dd.nextSibling%2Cf%3Da%7C%7ChasVisibleCards(b%5Bc%5D)%3F%22inline-block%22%3A%22none%22%3Bd.style.display%3Df%3BisResizeElement(e)%26%26(e.style.display%3Df)%7D%7D%7Dvoid%200%3D%3D%3Dwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3F(displayEmptyLists(!1)%2Cwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3DsetInterval(displayEmptyLists%2C500))%3A(clearInterval(window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL)%2Cwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3Dvoid%200%2CdisplayEmptyLists(!0))%3Bvoid+0">
+		<!-- Bookmarklet updated via https://www.yourjs.com/bookmarklet/ -->
+		<a class="button" href="javascript:'use%20strict'%3B(function()%7Bfunction%20e(h)%7Blet%20f%3Ddocument.getElementById(%22board%22).querySelectorAll(%22li%5Bdata-list-id%5D%22)%3Bfor(let%20c%3D0%3Bc%3Cf.length%3Bc%2B%2B)%7Bconst%20d%3Df%5Bc%5D%3Bvar%20b%3Dd%3Fd.querySelector(%22h2%5Bdata-testid%3Dlist-name%5D%22).textContent%7C%7C%22%22%3A%22%22%3Bif(!k%5Bb%5D)%7Bb%3Dd.nextSibling%3Bvar%20a%3Bif(!(a%3Dh))a%3A%7Ba%3Df%5Bc%5D.querySelectorAll(%22li%5Bdata-testid%3Dlist-card%5D%22)%3Bfor(let%20g%3D0%3Bg%3Ca.length%3Bg%2B%2B)if(!a%5Bg%5D.attributes.hidden)%7Ba%3D!0%3Bbreak%20a%7Da%3D!1%7Da%3Da%3F%22inline-block%22%3A%22none%22%3Bd.style.display%3Da%3Bb%26%26b.classList%26%26b.classList.contains(%22resize-element%22)%26%26(b.style.display%3Da)%7D%7D%7Dconst%20k%3D%7B%22In%20For%20Testing%20%5Cud83d%5Cudce6%22%3A!0%2C%22Testing%20In%20Progress%20%5Cud83d%5Cudd0e%20%5Cud83d%5Cudc1b%22%3A!0%2C%22Waiting%20on%20PRs%20or%20Deploys%20to%20Staging%20%5Cu231b%22%3A!0%2C%22In%20Progress%20%5Cud83d%5Cudc68%5Cu200d%5Cud83d%5Cudcbb%22%3A!0%2C%22This%20Week%20%5Cud83c%5Cudfc3%22%3A!0%2C%22Dev%20Work%20%5Cud83d%5Cudee0%5Cufe0f%22%3A!0%7D%3Bvoid%200%3D%3D%3Dwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3F(e(!1)%2Cwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3DsetInterval(e%2C500))%3A(clearInterval(window.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL)%2Cwindow.HIDE_EMPTY_TRELLO_LISTS_BOOKMARKLET_INTERVAL%3Dvoid%200%2Ce(!0))%7D)()%3Bvoid+0">
 			Hide Empty Trello Lists
 		</a> <p/>
 

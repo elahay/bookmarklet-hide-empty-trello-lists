@@ -1,7 +1,7 @@
 // After making changes, run `./update-doc.sh` to update the documentation (docs/index.html)
 // with this script minified.
-// 
-// Important Notes: 
+//
+// Important Notes:
 //   1. Do not use double-quotes anywhere within this script
 //   2. // comments will be removed
 //   3. /* */ comments will NOT be removed
@@ -15,6 +15,7 @@ javascript: (function () {
         'Waiting on PRs or Deploys to Staging ⌛': true,
         'In Progress 👨‍💻': true,
         'This Week 🏃': true,
+        'Dev Work 🛠️': true
     }
     function hasVisibleCards(list) {
         let listCards = list.querySelectorAll('li[data-testid=list-card]');
@@ -31,8 +32,12 @@ javascript: (function () {
     }
 
     function getListName(listElement) {
-        const titleElement = listElement?.querySelector('h2[data-testid=list-name]');
-        return titleElement?.textContent || '';
+        if (listElement) {
+            const titleElement = listElement.querySelector('h2[data-testid=list-name]');
+            return titleElement.textContent || '';
+        } else {
+            return '';
+        }
     }
 
     function displayEmptyLists(displayEmptyListsEnabled) {
