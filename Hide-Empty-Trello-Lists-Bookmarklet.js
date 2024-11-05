@@ -11,10 +11,15 @@ javascript: (function () {
 
     const whitelistedColumns = {
         'In For Testing 📦': true,
+        'In For Testing': true,
         'Testing In Progress 🔎 🐛': true,
+        'Testing In Progress': true,
         'Waiting on PRs or Deploys to Staging ⌛': true,
+        'Waiting on PRs or Deploys to Staging': true,
         'In Progress 👨‍💻': true,
+        'In Progress': true,
         'This Week 🏃': true,
+        'This Week': true,
         'Dev Work 🛠️': true
     }
     function hasVisibleCards(list) {
