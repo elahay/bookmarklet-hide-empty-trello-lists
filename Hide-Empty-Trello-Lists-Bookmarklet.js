@@ -12,6 +12,7 @@ javascript: (function () {
     const whitelistedColumns = {
         'In For Testing 📦': true,
         'In For Testing': true,
+        'Ready for Testing': true,
         'Testing In Progress 🔎 🐛': true,
         'Testing In Progress': true,
         'Waiting on PRs or Deploys to Staging ⌛': true,
