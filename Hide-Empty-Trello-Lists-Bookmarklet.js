@@ -9,20 +9,14 @@
 javascript: (function () {
     /* Source: https://baincd.github.io/bookmarklet-hide-empty-trello-lists */
 
-    const whitelistedColumns = {
-        'In For Testing 📦': true,
-        'In For Testing': true,
-        'Ready for Testing': true,
-        'Testing In Progress 🔎 🐛': true,
-        'Testing In Progress': true,
-        'Waiting on PRs or Deploys to Staging ⌛': true,
-        'Waiting on PRs or Deploys to Staging': true,
-        'In Progress 👨‍💻': true,
-        'In Progress': true,
-        'This Week 🏃': true,
-        'This Week': true,
-        'Dev Work 🛠️': true
-    }
+    const whitelistedColumns = [
+        'In For Testing',
+        'Ready for Testing',
+        'Testing In Progress',
+        'Waiting on PRs or Deploys to Staging',
+        'In Progress',
+        'This Week',
+    ]
     function hasVisibleCards(list) {
         let listCards = list.querySelectorAll('li[data-testid=list-card]');
         for (let i = 0; i < listCards.length; i++) {
@@ -51,7 +45,8 @@ javascript: (function () {
 
         for (let i = 0; i < lists.length; i++) {
             const list = lists[i];
-            if (whitelistedColumns[getListName(list)]) {
+            const listName = getListName(list);
+            if (whitelistedColumns.some(colName => listName.includes(colName))) {
                 continue;
             }
             const listSibling = list.nextSibling;
