@@ -13,7 +13,7 @@ function cleanCode(code) {
 const code = fs.readFileSync(BOOKMARKLET_PATH, 'utf8');
 const cleanedCode = cleanCode(code);
 const codeWithWrapper = `(function(){${cleanedCode}}();`;
-const jsOutput = `javascript:${encodeURIComponent(cleanedCode)}`;
+const jsOutput = `javascript:${encodeURIComponent(codeWithWrapper)}`;
 const html = `<a href="${jsOutput}">Hide Empty Trello Lists</a>`
 
 const htmlFile = fs.readFileSync(DOC_PATH, 'utf8');
